@@ -15,10 +15,10 @@ AGENT_DIRS=(
   academic
   design
   engineering
+  finance
   game-development
   marketing
   paid-media
-  sales
   product
   project-management
   sales
