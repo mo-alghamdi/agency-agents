@@ -227,22 +227,30 @@ HEREDOC
 
 convert_cursor() {
   local file="$1"
-  local name description slug outfile body
+  local name description slug outfile body always_apply always_lc
 
   name="$(get_field "name" "$file")"
   description="$(get_field "description" "$file")"
   slug="$(slugify "$name")"
   body="$(get_body "$file")"
+  always_apply="$(get_field "cursorAlwaysApply" "$file")"
+  always_lc="$(printf '%s' "$always_apply" | tr '[:upper:]' '[:lower:]')"
+  if [[ "$always_lc" == "true" ]]; then
+    always_apply="true"
+  else
+    always_apply="false"
+  fi
 
   outfile="$OUT_DIR/cursor/rules/${slug}.mdc"
   mkdir -p "$OUT_DIR/cursor/rules"
 
   # Cursor .mdc format: description + globs + alwaysApply frontmatter
+  # Optional agent frontmatter: cursorAlwaysApply: true
   cat > "$outfile" <<HEREDOC
 ---
 description: ${description}
 globs: ""
-alwaysApply: false
+alwaysApply: ${always_apply}
 ---
 ${body}
 HEREDOC
