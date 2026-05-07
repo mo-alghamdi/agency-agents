@@ -63,6 +63,12 @@ notes/
 TODO.md
 NOTES.md
 
+# Optional local installs of project-scoped tools (scripts/install.sh from repo root)
+/.opencode/
+/.qwen/
+/.windsurfrules
+/CONVENTIONS.md
+
 # Generated integration files — run scripts/convert.sh to regenerate locally
 # The scripts/ and integrations/*/README.md files ARE committed; only generated
 # agent/skill files are excluded.

@@ -587,7 +587,7 @@ main() {
     done
     rm -rf "$parallel_out_dir"
     local idx=7
-    for t in aider windsurf; do
+    for t in aider windsurf kimi; do
       progress_bar "$idx" "$n_tools"
       printf "\n"
       header "Converting: $t ($idx/$n_tools)"
